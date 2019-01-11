@@ -1,5 +1,7 @@
 package com.dhirajprakash.india.demo.controller;
 
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,15 @@ public class DemoService {
 
 	public ResponseEntity<?> read() {
 		logger.info("read called");
+
+		return new ResponseEntity(corRep.getAddress(), HttpStatus.OK);
+	}
+
+	public ResponseEntity<?> update() {
+		logger.info("update called");
+		correioAddress = corRep.findByIdManual(2);
+		correioAddress.setBairro("JARDIM");
+		corRep.save(correioAddress);
 
 		return new ResponseEntity(corRep.getAddress(), HttpStatus.OK);
 	}

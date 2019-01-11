@@ -30,4 +30,10 @@ public class DemoController {
 		return demoService.read();
 	}
 
+	@GetMapping("/demo/update")
+	@CrossOrigin
+	public ResponseEntity<?> update() {
+		return demoService.update();
+	}
+
 }
