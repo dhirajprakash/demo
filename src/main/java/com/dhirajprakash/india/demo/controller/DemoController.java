@@ -45,7 +45,7 @@ public class DemoController {
 	@GetMapping("/demo/em")
 	@CrossOrigin
 	public ResponseEntity<?> em() {
-		return demoService.entityManagerUsage();
+		return demoService.entityManagerUsage2();
 	}
 
 }

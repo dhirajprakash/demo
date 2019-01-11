@@ -74,4 +74,10 @@ public class DemoService {
 		return new ResponseEntity(lst, HttpStatus.OK);
 	}
 
+	public ResponseEntity<?> entityManagerUsage2() {
+		logger.info("Entity Manager called");
+
+		return new ResponseEntity(em.getProperties(), HttpStatus.OK);
+	}
+
 }
