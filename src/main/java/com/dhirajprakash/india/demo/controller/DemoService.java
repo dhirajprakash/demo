@@ -83,7 +83,7 @@ public class DemoService {
 		return new ResponseEntity(lst, HttpStatus.OK);
 	}
 
-	public ResponseEntity<?> entityManagerUsage2() {
+	public ResponseEntity<?> entityManagerFactoryUsage() {
 		logger.info("Entity Manager Factory called");
 		Session session = entityManagerFactory.unwrap(SessionFactory.class).openSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
