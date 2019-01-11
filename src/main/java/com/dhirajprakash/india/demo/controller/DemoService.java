@@ -3,8 +3,14 @@ package com.dhirajprakash.india.demo.controller;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +30,9 @@ public class DemoService {
 
 	@Autowired
 	EntityManager em;
+
+	@Autowired
+	private EntityManagerFactory entityManagerFactory;
 
 	public String calculate() {
 		logger.info("calculate called");
@@ -75,9 +84,13 @@ public class DemoService {
 	}
 
 	public ResponseEntity<?> entityManagerUsage2() {
-		logger.info("Entity Manager called");
-
-		return new ResponseEntity(em.getProperties(), HttpStatus.OK);
+		logger.info("Entity Manager Factory called");
+		Session session = entityManagerFactory.unwrap(SessionFactory.class).openSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<CorreioAddress> criteria = builder.createQuery(CorreioAddress.class);
+		Root<CorreioAddress> contactRoot = criteria.from(CorreioAddress.class);
+		criteria.select(contactRoot);
+		return new ResponseEntity(session.createQuery(criteria).getResultList(), HttpStatus.OK);
 	}
 
 }
