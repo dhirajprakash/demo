@@ -20,7 +20,7 @@ public class DemoController {
 
 	@GetMapping("/demo/create")
 	@CrossOrigin
-	public ResponseEntity<CorreioAddress> create() {
+	public ResponseEntity<?> create() {
 		return demoService.create();
 	}
 
@@ -34,6 +34,12 @@ public class DemoController {
 	@CrossOrigin
 	public ResponseEntity<?> update() {
 		return demoService.update();
+	}
+
+	@GetMapping("/demo/delete")
+	@CrossOrigin
+	public ResponseEntity<?> delete() {
+		return demoService.delete();
 	}
 
 }
