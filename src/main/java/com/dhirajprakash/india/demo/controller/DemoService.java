@@ -1,6 +1,9 @@
 package com.dhirajprakash.india.demo.controller;
 
-import java.util.Optional;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +21,9 @@ public class DemoService {
 
 	@Autowired
 	CorreioAddress correioAddress;
+
+	@Autowired
+	EntityManager em;
 
 	public String calculate() {
 		logger.info("calculate called");
@@ -59,6 +65,13 @@ public class DemoService {
 		if (correioAddress != null)
 			corRep.delete(correioAddress);
 		return new ResponseEntity(corRep.getAddress(), HttpStatus.OK);
+	}
+
+	public ResponseEntity<?> entityManagerUsage() {
+		logger.info("Entity Manager called");
+		Query corAddQuery = em.createNativeQuery("Select bairro,end from Correio_Address");
+		List<?> lst = corAddQuery.getResultList();
+		return new ResponseEntity(lst, HttpStatus.OK);
 	}
 
 }

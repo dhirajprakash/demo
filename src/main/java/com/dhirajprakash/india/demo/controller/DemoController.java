@@ -42,4 +42,10 @@ public class DemoController {
 		return demoService.delete();
 	}
 
+	@GetMapping("/demo/em")
+	@CrossOrigin
+	public ResponseEntity<?> em() {
+		return demoService.entityManagerUsage();
+	}
+
 }
