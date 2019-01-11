@@ -7,8 +7,10 @@ import javax.persistence.*;
 public class CorreioAddress {
 
 	@Id
+	@SequenceGenerator(name = "SEQ_GEN", sequenceName = "SEQ_JUST_FOR_TEST", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN")
 	@Column(name = "ID")
-	String id;
+	Integer id;
 
 	@Column(name = "BAIRRO")
 	String bairro;
@@ -23,11 +25,11 @@ public class CorreioAddress {
 	@Column(name = "UF")
 	String uf;
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
