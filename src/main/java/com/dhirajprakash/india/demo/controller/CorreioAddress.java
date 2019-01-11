@@ -1,9 +1,18 @@
 package com.dhirajprakash.india.demo.controller;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "CORREIO_ADDRESS")
+@Component
 public class CorreioAddress {
 
 	@Id

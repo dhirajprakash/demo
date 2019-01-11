@@ -14,6 +14,9 @@ public class DemoService {
 	@Autowired
 	CorreioAddressRepository corRep;
 
+	@Autowired
+	CorreioAddress correioAddress;
+
 	public String calculate() {
 		logger.info("calculate called");
 		return String.valueOf(2 * 3);
@@ -22,7 +25,6 @@ public class DemoService {
 	public ResponseEntity<CorreioAddress> create() {
 		logger.info("create called");
 
-		CorreioAddress correioAddress = new CorreioAddress();
 		correioAddress.setCep("05364120");
 		correioAddress.setCidade("Sao Paulo");
 		correioAddress.setComplemento2("Casa 1");
@@ -31,6 +33,12 @@ public class DemoService {
 		correioAddress.setBairro("Jardim Ivana");
 		corRep.save(correioAddress);
 		return new ResponseEntity<CorreioAddress>(correioAddress, HttpStatus.OK);
+	}
+
+	public ResponseEntity<?> read() {
+		logger.info("read called");
+
+		return new ResponseEntity(corRep.getAddress(), HttpStatus.OK);
 	}
 
 }

@@ -24,4 +24,10 @@ public class DemoController {
 		return demoService.create();
 	}
 
+	@GetMapping("/demo/read")
+	@CrossOrigin
+	public ResponseEntity<?> read() {
+		return demoService.read();
+	}
+
 }
