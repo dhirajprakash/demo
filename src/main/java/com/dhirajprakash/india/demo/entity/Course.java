@@ -3,8 +3,10 @@ package com.dhirajprakash.india.demo.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "COURSE")
 public class Course {
 
 	@Id
@@ -30,6 +32,11 @@ public class Course {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + "]";
 	}
 
 }
