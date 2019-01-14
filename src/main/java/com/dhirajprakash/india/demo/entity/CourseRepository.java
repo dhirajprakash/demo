@@ -33,4 +33,8 @@ public class CourseRepository {
 		em.remove(course);
 	}
 
+	public void playWithEntityManager() {
+
+	}
+
 }
